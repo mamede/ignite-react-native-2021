@@ -58,7 +58,9 @@ export function Dashboard() {
               <Styled.UserName>Mamede</Styled.UserName>
             </Styled.User>
           </Styled.UserInfo>
-          <Styled.Icon name="power"/>
+          <Styled.LogoutButton onPress={() => {}}>
+            <Styled.Icon name="power"/>
+          </Styled.LogoutButton>
         </Styled.UserWrapper>
       </Styled.Header>
 

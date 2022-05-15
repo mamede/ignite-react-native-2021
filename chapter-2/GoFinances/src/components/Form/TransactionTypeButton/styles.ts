@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/native';
 import { TouchableOpacity } from 'react-native'
-import Feather from '@expo/vector-icons/Feather';
+import Feather from 'react-native-vector-icons/Feather'
 import { RFValue } from 'react-native-responsive-fontsize';
 
 interface IconProps {
