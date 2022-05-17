@@ -27,7 +27,7 @@ export function AppRoutes(){
     >
       <Screen
         name="Listagem"
-        component={Register}
+        component={Dashboard}
         options={{
           tabBarIcon: (({ size, color }) => (
             <MaterialIcons

@@ -1,16 +1,12 @@
 import React from 'react';
 import * as Styled from './styles'
-
-interface CategoryProps {
-  name: string;
-  icon: string;
-}
+import { categories } from '../../utils/categories';
 
 export interface TransactionCardProps {
   type: 'positive' | 'negative';
-  title: string;
+  name: string;
   amount: string;
-  category: CategoryProps;
+  category: string;
   date: string;
 }
 
@@ -19,9 +15,13 @@ interface Props {
 }
 
 export function TransactionCard({ data }: Props){
+  const [ category ] = categories.filter(
+    item => item.key === data.category
+  );
+
   return (
     <Styled.Container>
-      <Styled.Title>{data.title}</Styled.Title>
+      <Styled.Title>{data.name}</Styled.Title>
 
       <Styled.Amount type={data.type}>
         { data.type === 'negative' && '- ' }
@@ -30,9 +30,9 @@ export function TransactionCard({ data }: Props){
 
       <Styled.Footer>
         <Styled.Category>
-          <Styled.Icon name={data.category.icon} />
+          <Styled.Icon name={category.icon} />
           <Styled.CategoryName>
-            {data.category.name}
+            {category.name}
           </Styled.CategoryName>
         </Styled.Category>
 
