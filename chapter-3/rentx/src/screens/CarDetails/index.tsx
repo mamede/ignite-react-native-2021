@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useNavigation } from '@react-navigation/native';
 import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
 import { Accessory } from '../../components/Accessory';
@@ -15,6 +15,12 @@ import peopleSvg from '../../assets/people.svg'
 import * as Styled from './styles';
 
 export function CarDetails(){
+  const navigation = useNavigation<any>()
+
+  function handleConfirmRental() {
+    navigation.navigate('Scheduling')
+  }
+  
   return (
     <Styled.Container>
       <Styled.Header>
@@ -57,7 +63,7 @@ export function CarDetails(){
       </Styled.Content>
 
       <Styled.Footer>
-        <Button title="Confirmar" />
+        <Button title="Escolher período do aluguel" onPress={handleConfirmRental} />
       </Styled.Footer>
     </Styled.Container>
   );

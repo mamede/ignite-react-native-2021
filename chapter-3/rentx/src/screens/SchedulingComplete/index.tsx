@@ -7,6 +7,7 @@ import DoneSvg from '../../assets/done.svg';
 import { ConfirmButton } from '../../components/ConfirmButton';
 
 import * as Styled from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 interface Params {
   title: string;
@@ -17,6 +18,12 @@ interface Params {
 export function SchedulingComplete(){
   const { width } = useWindowDimensions();
 
+  const navigation = useNavigation<any>();
+
+  function handleConfirm() {
+    navigation.navigate('Home')
+  }
+  
   return (
     <Styled.Container>
       <StatusBar 
@@ -39,7 +46,7 @@ export function SchedulingComplete(){
       </Styled.Content>
 
       <Styled.Footer>
-        <ConfirmButton title="OK" onPress={() => {}} />
+        <ConfirmButton title="OK" onPress={handleConfirm} />
       </Styled.Footer>
     </Styled.Container>
   );

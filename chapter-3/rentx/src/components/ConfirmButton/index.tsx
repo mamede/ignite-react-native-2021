@@ -1,18 +1,18 @@
 import React from 'react';
-import { TouchableOpacityProps } from 'react-native';
+import { RectButtonProps } from 'react-native-gesture-handler';
 
 import * as Styled from './styles';
 
-interface Props extends TouchableOpacityProps {
+interface Props extends RectButtonProps {
   title: string;
 }
 
 export function ConfirmButton({ 
   title, 
-  onPress,
+  ...rest
 }: Props){
   return (
-    <Styled.Container onPress={onPress}>
+    <Styled.Container {...rest}>
       <Styled.Title>{title}</Styled.Title>
     </Styled.Container>
   );
