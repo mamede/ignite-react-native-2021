@@ -13,7 +13,7 @@ import {
 } from '@expo-google-fonts/archivo';
 
 import theme from './src/styles/theme';
-import { CarDetails } from './src/screens/CarDetails';
+import { SchedulingComplete } from './src/screens/SchedulingComplete';
 
 export default function App() {
   SplashScreen.preventAutoHideAsync();
@@ -34,7 +34,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <CarDetails />
+      <SchedulingComplete />
     </ThemeProvider>
   )
 }

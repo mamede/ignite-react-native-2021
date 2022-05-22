@@ -24,7 +24,7 @@ export function CarDetails(){
       <Styled.CarImages>
         <ImageSlider 
           imagesUrl={['https://freepngimg.com/thumb/audi/35227-5-audi-rs5-red.png']}
-          />
+        />
       </Styled.CarImages>
 
       <Styled.Content>
