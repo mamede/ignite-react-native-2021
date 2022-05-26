@@ -5,7 +5,7 @@ import { StatusBar, StyleSheet, BackHandler } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import Logo from '../../assets/logo.svg';
 import { Car } from '../../components/Car';
-import { Load } from '../../components/Load';
+import { LoadAnimation } from '../../components/LoadAnimation';
 import { Ionicons } from '@expo/vector-icons';
 import { CarDTO } from '../../dtos/CarDTO';
 import { api } from '../../services/api';
@@ -109,7 +109,7 @@ export function Home() {
         </Styled.HeaderContent>
       </Styled.Header>
       {loading ? (
-        <Load />
+        <LoadAnimation />
       ) : (
         <Styled.CarList
           data={cars}

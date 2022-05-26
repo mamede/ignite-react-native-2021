@@ -6,7 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { parseISO, format } from 'date-fns';
 
 import { BackButton } from '../../components/BackButton';
-import { Load } from '../../components/Load';
+import { LoadAnimation } from '../../components/LoadAnimation';
 
 import { Car } from '../../components/Car';
 import { CarDTO } from '../../dtos/CarDTO';
@@ -70,7 +70,7 @@ export function MyCars(){
           Conforto, segurança e praticidade.
         </Styled.SubTitle>
       </Styled.Header>
-      { loading ? <Load /> : (
+      { loading ? <LoadAnimation /> : (
         <Styled.Content>
           <Styled.Appointments>
             <Styled.AppointmentsTitle>Agendamentos feitos</Styled.AppointmentsTitle>
