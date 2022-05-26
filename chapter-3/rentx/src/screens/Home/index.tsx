@@ -60,7 +60,7 @@ export function Home() {
             />
 
           <Styled.TotalCars>
-            Total de 12 carros
+            Total de {cars.length} carros
           </Styled.TotalCars>
         </Styled.HeaderContent>
       </Styled.Header>
