@@ -26,10 +26,14 @@ export function SchedulingDetails(){
     navigation.navigate('SchedulingComplete')
   }
 
+  function handleBack(){
+    navigation.goBack();
+  }
+
   return (
     <Styled.Container>
       <Styled.Header>
-        <BackButton onPress={() => {}} />
+        <BackButton onPress={handleBack} />
       </Styled.Header>
 
       <Styled.CarImages>
