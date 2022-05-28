@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
 import { useTheme } from 'styled-components';
-import {  RectButtonProps } from 'react-native-gesture-handler';
+import { RectButtonProps } from 'react-native-gesture-handler';
 import * as Styled from './styles';
 
 interface Props extends RectButtonProps{
