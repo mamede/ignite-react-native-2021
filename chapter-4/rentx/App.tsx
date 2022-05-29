@@ -1,4 +1,5 @@
 import React from 'react';
+import { LogBox } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ThemeProvider } from 'styled-components';
 import * as SplashScreen from 'expo-splash-screen';
@@ -15,11 +16,10 @@ import {
 
 import theme from './src/styles/theme';
 import { Routes } from './src/routes';
-
-import { LogBox } from 'react-native'
+import { AppProvider } from './src/hooks';
 
 LogBox.ignoreLogs([
-    'ViewPropTypes will be removed from React Native. Migrate to ViewPropTypes exported from \'deprecated-react-native-prop-types\'.'
+  'ViewPropTypes will be removed from React Native. Migrate to ViewPropTypes exported from \'deprecated-react-native-prop-types\'.'
 ])
 
 export default function App() {
@@ -42,7 +42,9 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <Routes />
+        <AppProvider>
+          <Routes />
+        </AppProvider>
       </GestureHandlerRootView>
     </ThemeProvider>
   )

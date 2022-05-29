@@ -10,7 +10,7 @@ import {
 import * as Yup from 'yup';
 
 import theme from '../../styles/theme';
-// import { useAuth } from '../../hooks/auth';
+import { useAuth } from '../../hooks/auth';
 
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
@@ -23,7 +23,7 @@ export function SignIn(){
   const [password, setPassword] = useState('');
 
   const navigation = useNavigation<any>();
-  // const { signIn } = useAuth();
+  const { signIn } = useAuth();
 
   async function handleSignIn() {
     try{
@@ -37,7 +37,7 @@ export function SignIn(){
   
       await schema.validate({ email, password });
 
-      // signIn({ email, password });
+      signIn({ email, password });
     }catch(error){
       if(error instanceof Yup.ValidationError){
         Alert.alert('Opa', error.message);

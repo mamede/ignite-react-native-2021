@@ -110,8 +110,8 @@ export function CarDetails(){
             </Styled.Description>
 
             <Styled.Rent>
-              <Styled.Period>{car.rent.period}</Styled.Period>
-              <Styled.Price>R$ {car.rent.price}</Styled.Price>
+              <Styled.Period>{car.period}</Styled.Period>
+              <Styled.Price>R$ {car.price}</Styled.Price>
             </Styled.Rent>
           </Styled.Details>
 
