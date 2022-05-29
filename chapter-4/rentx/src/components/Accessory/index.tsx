@@ -11,12 +11,13 @@ interface Props {
 
 export function Accessory({
   name,
-  icon: Icon
+  icon: Icon,
+  ...rest
 }:Props){
   const theme = useTheme();
 
   return (
-    <Styled.Container>
+    <Styled.Container {...rest}>
       <Icon 
         width={32} 
         height={32} 

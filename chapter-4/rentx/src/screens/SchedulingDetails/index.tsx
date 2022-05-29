@@ -30,33 +30,19 @@ interface RentalPeriod {
 export function SchedulingDetails(){
   const [loading, setLoading] = useState(false);
   const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod);
-
+  
   const theme = useTheme();
   const navigation = useNavigation<any>();
   const route = useRoute();
   const { car, dates } = route.params as Params;
-  
+
   const rentTotal = Number(dates.length * car.price);
 
   async function handleConfirmRental() {
     setLoading(true)
-    const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`)
-
-    const unavailable_dates = [
-      ...schedulesByCar.data.unavailable_dates,
-      ...dates,
-    ];
-
-    await api.post('schedules_byuser', {
+    await api.post('/rentals', {
       user_id: 1,
-      car,
-      startDate: format(getPlatformDate(new Date(dates[0])), 'dd/MM/yyyy'),
-      endDate:  format(getPlatformDate(new Date(dates[dates.length - 1])), 'dd/MM/yyyy'),
-    })
-
-    api.put(`/schedules_bycars/${car.id}`, {
-      id: car.id,
-      unavailable_dates,
+      car_id: car.id,
       start_date: new Date(),
       end_date: new Date(),
       total: rentTotal
@@ -75,7 +61,7 @@ export function SchedulingDetails(){
   }
 
   function handleBack(){
-    navigation.goBack();
+    navigation.goBack();    
   }
 
   useEffect(() => {
@@ -84,7 +70,7 @@ export function SchedulingDetails(){
       end:  format(getPlatformDate(new Date(dates[dates.length - 1])), 'dd/MM/yyyy'),
     })
   },[])
-
+  
   return (
     <Styled.Container>
       <Styled.Header>
@@ -93,7 +79,7 @@ export function SchedulingDetails(){
 
       <Styled.CarImages>
         <ImageSlider 
-          imagesUrl={car.photos}
+          imagesUrl={car.photos} 
         />
       </Styled.CarImages>
 
@@ -111,15 +97,15 @@ export function SchedulingDetails(){
         </Styled.Details>
 
         <Styled.Accessories>
-        {
-          car.accessories.map(accessory => (
-            <Accessory 
-              key={accessory.type}
-              name={accessory.name}
-              icon={getAccessoryIcon(accessory.type)}
-            />
-          ))
-        }
+          {
+            car.accessories.map(accessory => (
+              <Accessory 
+                key={accessory.type}
+                name={accessory.name}
+                icon={getAccessoryIcon(accessory.type)}
+              />
+            ))
+          }
         </Styled.Accessories>
 
         <Styled.RentalPeriod>
@@ -137,9 +123,9 @@ export function SchedulingDetails(){
           </Styled.DateInfo>
 
           <Feather 
-            name="chevron-right"
-            size={RFValue(20)}
-            color={theme.colors.text}
+              name="chevron-right"
+              size={RFValue(20)}
+              color={theme.colors.text}
           />
 
           <Styled.DateInfo>
@@ -166,6 +152,6 @@ export function SchedulingDetails(){
           loading={loading}
         />
       </Styled.Footer>
-    </Styled.Container> 
+    </Styled.Container>
   );
 }
