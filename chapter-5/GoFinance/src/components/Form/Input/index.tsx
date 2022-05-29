@@ -3,10 +3,12 @@ import { TextInputProps } from 'react-native';
 
 import * as Styled from './styles';
 
-type Props = TextInputProps;
+interface Props extends TextInputProps {
+  active?: boolean;  
+};
 
-export function Input({...rest} : Props){
+export function Input({ active = false, ...rest } : Props){
   return(
-    <Styled.Container {...rest} />
+    <Styled.Container style={[ {flex: 1}]} active={active} {...rest} />
   );
 }

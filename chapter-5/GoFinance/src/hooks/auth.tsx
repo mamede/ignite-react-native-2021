@@ -9,7 +9,6 @@ import React, {
 import { CLIENT_ID, REDIRECT_URI } from 'react-native-dotenv';
 
 import * as AuthSession from 'expo-auth-session';
-import * as AppleAuthentication from 'expo-apple-authentication';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface AuthProviderProps {
@@ -26,7 +25,6 @@ interface User {
 interface IAuthContextData {
   user: User;
   signInWithGoogle(): Promise<void>;
-  signInWithApple(): Promise<void>;
   signOut(): Promise<void>;
   userStorageLoading: boolean;
 }
@@ -75,30 +73,30 @@ function AuthProvider({ children }: AuthProviderProps ) {
     }
   }
 
-  async function signInWithApple() {
-    try {
-      const credential = await AppleAuthentication.signInAsync({
-        requestedScopes: [
-          AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
-          AppleAuthentication.AppleAuthenticationScope.EMAIL,
-        ]
-      });
+  // async function signInWithApple() {
+  //   try {
+  //     const credential = await AppleAuthentication.signInAsync({
+  //       requestedScopes: [
+  //         AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+  //         AppleAuthentication.AppleAuthenticationScope.EMAIL,
+  //       ]
+  //     });
 
-      if (credential) {
-        const userLogged = {
-          id: String(credential.user),
-          email: credential.email!,
-          name: credential.fullName!.givenName!,
-          photo: undefined
-        };
+  //     if (credential) {
+  //       const userLogged = {
+  //         id: String(credential.user),
+  //         email: credential.email!,
+  //         name: credential.fullName!.givenName!,
+  //         photo: undefined
+  //       };
 
-        setUser(userLogged);
-        await AsyncStorage.setItem(userStorageKey, JSON.stringify(userLogged));
-      }
-    } catch (error) {
-      throw new Error(error);
-    }
-  }
+  //       setUser(userLogged);
+  //       await AsyncStorage.setItem(userStorageKey, JSON.stringify(userLogged));
+  //     }
+  //   } catch (error) {
+  //     throw new Error(error);
+  //   }
+  // }
 
   const signOut = async () => {
     setUser({} as User);
@@ -125,7 +123,6 @@ function AuthProvider({ children }: AuthProviderProps ) {
     <AuthContext.Provider value={{
       user,
       signInWithGoogle,
-      signInWithApple,
       signOut,
       userStorageLoading
     }}>

@@ -47,7 +47,7 @@ export function Register() {
 
   const { user } = useAuth();
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   const {
     control,
@@ -155,6 +155,7 @@ export function Register() {
           </Styled.TransactionsTypes>
 
           <CategorySelectButton 
+            testID="button-category"
             title={category.name}
             onPress={handleOpenSelectCategoryModal}
           />
@@ -166,7 +167,7 @@ export function Register() {
         />
       </Styled.Form>
 
-      <Modal visible={categoryModalOpen}>
+      <Modal testID="modal-category" visible={categoryModalOpen}>
         <CategorySelect
           category={category}
           setCategory={setCategory}
